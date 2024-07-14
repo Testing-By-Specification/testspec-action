@@ -27,3 +27,7 @@ runs:
         cd cloned-repo
         ./${{ inputs.action_path }}
       shell: bash
+
+branding:
+  icon: 'anchor'
+  color: 'green'
