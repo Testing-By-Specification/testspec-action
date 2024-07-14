@@ -1,7 +1,18 @@
 # Testspec-action
 
-## Links
-[![Source on GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/Testing-By-Specification/testspec-java)
+# Usage
+
+<!-- start usage -->
+```yaml
+- name: Checkout repository
+  uses: actions/checkout@v2
+
+- name: Use Testspec Action to Clone and Run
+  uses: Testing-By-Specification/testspec-action@v1
+  with:
+    action_path: './gradlew build'
+```
+<!-- end usage -->
 
 Traditionally, in large organizations software systems often tested manually by dedicated QA teams.
 While it has some merits, this approach suffers from serious limitations.
