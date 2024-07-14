@@ -1,5 +1,3 @@
-# Testspec-action
-
 # Usage
 
 <!-- start usage -->
