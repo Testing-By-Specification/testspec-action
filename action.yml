@@ -1,4 +1,4 @@
-name: 'Clone and Run Composite Action'
+name: 'Testspec Action'
 description: 'This action clones testspec java private repository and runs as an action'
 inputs:
   repo_url:
