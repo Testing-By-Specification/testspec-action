@@ -5,10 +5,6 @@ inputs:
     description: 'The URL of the repository to clone'
     required: true
     default: "https://github.com/Testing-By-Specification/testspec-java"
-  repo_token:
-    description: 'The token to access the repository'
-    required: true
-    default: ${{ secrets.CLONE_REPO_TOKEN }}
   action_path:
     description: 'The path to the action in the cloned repository'
     required: true
@@ -19,7 +15,7 @@ runs:
   steps:
     - name: Checkout the private repository
       run: |
-        git clone https://${{ inputs.repo_token }}@${{ inputs.repo_url }} cloned-repo
+        git clone https://${{ secrets.CLONE_REPO_TOKEN }}@${{ inputs.repo_url }} cloned-repo
       shell: bash
 
     - name: Run the action from cloned repository
