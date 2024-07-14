@@ -1,0 +1,29 @@
+name: 'Clone and Run Composite Action'
+description: 'This action clones testspec java private repository and runs as an action'
+inputs:
+  repo_url:
+    description: 'The URL of the repository to clone'
+    required: true
+    default: "https://github.com/Testing-By-Specification/testspec-java"
+  repo_token:
+    description: 'The token to access the repository'
+    required: true
+    default: ${{ secrets.CLONE_REPO_TOKEN }}
+  action_path:
+    description: 'The path to the action in the cloned repository'
+    required: true
+    default: ./gradlew build
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout the private repository
+      run: |
+        git clone https://${{ inputs.repo_token }}@${{ inputs.repo_url }} cloned-repo
+      shell: bash
+
+    - name: Run the action from cloned repository
+      run: |
+        cd cloned-repo
+        ./${{ inputs.action_path }}
+      shell: bash
