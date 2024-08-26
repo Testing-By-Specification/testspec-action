@@ -15,7 +15,7 @@ runs:
   steps:
     - name: Checkout the private repository
       run: |
-        git clone https://${{ secrets.CLONE_REPO_TOKEN }}@${{ inputs.repo_url }} cloned-repo
+        git clone https://${{ secrets.RELEASE_TOKEN }}@${{ inputs.repo_url }} cloned-repo
       shell: bash
 
     - name: Run the action from cloned repository
