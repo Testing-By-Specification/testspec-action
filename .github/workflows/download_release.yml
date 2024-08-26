@@ -19,6 +19,13 @@ jobs:
 
     - name: List Build Directory Contents
       run: ls -alh
+
+    - name: Cech for java
+      run: java --version
+
+    - name: List Build Directory Contents
+      run: jar xvf testspec-java-0.0.4-all.jar
+
 #    - uses: robinraju/release-downloader@v1
 #      with:
 #        repository: 'https://github.com/Testing-By-Specification/testspec-java'
