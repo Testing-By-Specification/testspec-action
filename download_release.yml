@@ -1,0 +1,21 @@
+name: Publish package to GitHub Packages
+on:
+  workflow_dispatch:
+    inputs:
+      publish_maven:
+        description: "Publishing to GitHub Packages"
+        required: true
+        type: boolean
+jobs:
+  download_jar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: robinraju/release-downloader@v1
+        with:
+          repository: 'https://github.com/Testing-By-Specification/testspec-java'
+          latest: true
+          fileName: '*.jar'
+          token: ${{ secrets.RELEASE_TOKEN }}
+
+      - name: List Build Directory Contents
+        run: ls -alh
