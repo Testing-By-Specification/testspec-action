@@ -1,5 +1,4 @@
 import * as core from '@actions/core';
-import * as github from '@actions/github';
 import * as exec from '@actions/exec';
 import axios from 'axios';
 import * as fs from 'fs';
@@ -7,32 +6,15 @@ import * as path from 'path';
 
 async function run() {
     try {
-        // Inputs from the action.yml
-        const versionTag = core.getInput('version_tag', { required: true });
-        const owner = 'Testing-By-Specification';
-        const repo = 'testspec-action';
-        const assetName = `testspec-java-${versionTag}-all.jar`;
-
-        // GitHub API base URL for releases
-        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/tags/${versionTag}`;
-
-        // Fetch the release information
-        const response = await axios.get(apiUrl);
-        const release = response.data;
-
-        // Find the asset download URL
-        const asset = release.assets.find((a: any) => a.name === assetName);
-        if (!asset) {
-            throw new Error(`Asset ${assetName} not found in release ${versionTag}`);
-        }
-
-        const downloadUrl = asset.browser_download_url;
+        // Direct URL for the asset
+        const assetUrl = "https://github.com/Testing-By-Specification/testspec-action/releases/download/0.0.4/testspec-java-0.0.4-all.jar";
+        const assetName = path.basename(assetUrl); // Extract the file name from the URL
+        const assetPath = path.join(process.cwd(), assetName); // Save the file in the current directory
 
         // Download the asset
-        const assetPath = path.join(process.cwd(), assetName);
         const writer = fs.createWriteStream(assetPath);
         const downloadResponse = await axios({
-            url: downloadUrl,
+            url: assetUrl,
             method: 'GET',
             responseType: 'stream',
         });
@@ -50,7 +32,11 @@ async function run() {
         await exec.exec('java', ['-jar', assetPath]);
 
     } catch (error) {
-        core.setFailed(error.message);
+        if (error instanceof Error) {
+            core.setFailed(error.message);
+        } else {
+            core.setFailed(String(error));  // Fallback for non-Error types
+        }
     }
 }
 
