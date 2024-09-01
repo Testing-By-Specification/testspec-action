@@ -5,10 +5,13 @@
 - name: Checkout repository
   uses: actions/checkout@v2
 
-- name: Use Testspec Action to Clone and Run
+- name: Use Testspec Action to Download and Run JAR
   uses: Testing-By-Specification/testspec-action@v1
   with:
-    action_path: './gradlew build'
+    version: '0.0.4'         # The version tag of the release to download
+    plugin_type: 'directory'  # Specify 'directory' or 'file' based on the usage
+    plugin_path: './features'  # Path to the features directory (./features/core) or file ("./features/core/Command.feature
+
 ```
 <!-- end usage -->
 
