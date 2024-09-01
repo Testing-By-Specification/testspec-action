@@ -2,8 +2,14 @@ name: 'Download and Run JAR'
 description: 'Downloads a JAR file from a public GitHub release and runs it.'
 author: 'Your Name'
 inputs:
-  version_tag:
+  version:
     description: 'Version tag of the release to download'
+    required: true
+  plugin_type:
+    description: 'Specify if the plugin path is a directory or a file (values: directory, file)'
+    required: true
+  plugin_path:
+    description: 'Path to the directory or file to be used with the JAR file'
     required: true
 runs:
   using: 'node20'
