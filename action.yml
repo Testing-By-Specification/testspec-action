@@ -1,4 +1,4 @@
-name: 'Download and Run JAR'
+name: 'TestSpec Action'
 description: 'Downloads a JAR file from a public GitHub release and runs it.'
 author: 'Your Name'
 inputs:
