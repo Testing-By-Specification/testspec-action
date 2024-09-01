@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2019",
+    "lib": ["ES2019"],
+    "outDir": "dist",
+    "types": ["node"]  // Include Node.js types
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
