@@ -5,8 +5,8 @@
 - name: Checkout repository
   uses: actions/checkout@v2
 
-- name: Use Testspec Action to Download and Run JAR
-  uses: Testing-By-Specification/testspec-action@v1
+- name: Use Testspec to run features 
+  uses: Testing-By-Specification/testspec-action@v0.0.4-beta.1
   with:
     version: '0.0.4'         # The version tag of the release to download
     plugin_type: 'directory'  # Specify 'directory' or 'file' based on the usage
