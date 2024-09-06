@@ -55,7 +55,7 @@ async function run() {
         if (error instanceof Error) {
             core.setFailed(error.message);
         } else {
-            core.setFailed(String(error));  // Fallback for non-Error types
+            core.setFailed(String(error));
         }
     }
 }

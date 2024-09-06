@@ -1,15 +1,15 @@
 name: 'TestSpec Action'
-description: 'Downloads a JAR file from a public GitHub release and runs it.'
-author: 'Your Name'
+description: 'The BDD Framework TestSpec is a GitHub Action designed to execute against feature files.'
+author: 'Volodymyr Rozdolsky'
 inputs:
   version:
-    description: 'Version tag of the release to download'
+    description: 'The version of the TestSpec release to use.'
     required: true
   plugin_type:
-    description: 'Specify if the plugin path is a directory or a file (values: directory, file)'
+    description: 'Specify whether the plugin path is a directory or a file (valid values: directory, file).'
     required: true
   plugin_path:
-    description: 'Path to the directory or file to be used with the JAR file'
+    description: 'The path to the directory or file where TestSpec will run.'
     required: true
 runs:
   using: 'node20'
