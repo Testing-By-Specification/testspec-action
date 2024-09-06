@@ -5,12 +5,28 @@
 - name: Checkout repository
   uses: actions/checkout@v2
 
-- name: Use Testspec to run features 
+- name: '<Your Feature Under Test>' # Example: REST API Feature Testing or Database Feature Testing 
   uses: Testing-By-Specification/testspec-action@v0.0.4-beta.1
   with:
-    version: '0.0.4'         # The version tag of the release to download
-    plugin_type: 'directory'  # Specify 'directory' or 'file' based on the usage
-    plugin_path: './features'  # Path to the features directory (./features/core) or file ("./features/core/Command.feature
+    version: '0.0.4'         # The release version to download and run
+    plugin_type: 'directory'  # Specify 'directory' or 'file' depending on the input
+    plugin_path: '/src/test/resources/features/database'  # Path to the directory (e.g., './features/core') or file (e.g., './features/core/Command.feature')
+```
+### Optional
+If you need to specify a Java version before running TestSpec, otherwise Java 11 will be used by default:
+```yaml
+- name: Set up JDK 17
+  uses: actions/setup-java@v3
+  with:
+    distribution: 'temurin'
+    java-version: '17'
+
+- name: REST API Feature Test
+  uses: Testing-By-Specification/testspec-action@v0.0.4-beta.1
+  with:
+    version: '0.0.4'
+    plugin_type: 'directory'
+    plugin_path: '/src/test/resources/features/rest'
 
 ```
 <!-- end usage -->
